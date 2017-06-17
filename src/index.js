@@ -1,0 +1,20 @@
+import React from 'react'
+import {render} from 'react-dom'
+import {Provider} from 'react-redux'
+import {ConnectedRouter} from 'react-router-redux'
+import store, {history} from './store'
+import Layout from './containers/layout'
+
+import registerServiceWorker from './registerServiceWorker';
+import 'sanitize.css/sanitize.css'
+import './index.css';
+
+
+render(<Provider store={store}>
+    <ConnectedRouter history={history}>
+        <div>
+            <Layout />
+        </div>
+    </ConnectedRouter>
+</Provider>, document.getElementById('root'));
+registerServiceWorker();
