@@ -1,19 +1,19 @@
 import {createStore, applyMiddleware, compose} from 'redux'
-import {routerMiddleware} from 'react-router-redux'
 import thunk from 'redux-thunk'
-import createHistory from 'history/createBrowserHistory'
 import rootReducer from './modules'
-import setAuth from './utils/setAuth'
 import {SET_CURRENT_USER} from './modules/auth'
+import {PUSH_VIEW_CONTROLLER} from './modules/navigation'
+import {CONNECT_SOCKET, DISCONNECT_SOCKET} from './modules/socket'
+import {SET_APP_CONFIG, JOIN_GROUP_WITH_POPUP} from './modules/app'
+import setAuth from './utils/setAuth'
+import Cookies from 'js-cookie'
 
-export const history = createHistory()
 
-const initialState = {}
-const enhancers = []
+const initialState = {};
+const enhancers = [];
 const middleware = [
-    thunk,
-    routerMiddleware(history)
-]
+    thunk
+];
 
 if (process.env.NODE_ENV === 'development') {
     const devToolsExtension = window.devToolsExtension
@@ -26,25 +26,12 @@ if (process.env.NODE_ENV === 'development') {
 const composedEnhancers = compose(
     applyMiddleware(...middleware),
     ...enhancers
-)
+);
 
 const store = createStore(
     rootReducer,
     initialState,
     composedEnhancers
-)
-
-
-const auth = localStorage.getItem('auth');
-let authData = null;
-
-if (typeof auth !== "undefined" && auth !== null) {
-    authData = JSON.parse(auth);
-}
-
-store.dispatch({
-    type: SET_CURRENT_USER,
-    payload: authData
-});
+);
 
 export default store
