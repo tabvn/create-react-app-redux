@@ -1,7 +1,7 @@
 import React from 'react'
 import {render} from 'react-dom'
 import {Provider} from 'react-redux'
-import store, {history} from './store'
+import store from './store'
 import Layout from './containers/layout'
 
 import registerServiceWorker from './registerServiceWorker';
@@ -11,5 +11,5 @@ import './css/app.css';
 
 render(<Provider store={store}>
     <Layout />
-</Provider>, document.getElementById('livex-app'));
+</Provider>, document.getElementById('root'));
 registerServiceWorker();

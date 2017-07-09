@@ -1,8 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './modules'
-import setAuth from './utils/setAuth'
-import Cookies from 'js-cookie'
 
 
 const initialState = {};

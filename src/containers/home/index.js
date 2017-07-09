@@ -15,7 +15,7 @@ class HomeComponent extends React.Component {
 
         return (
             <div className="main-content">
-                <h1>Home</h1>
+                <h1>App</h1>
                 <p>Home Works!</p>
 
             </div>
@@ -25,7 +25,6 @@ class HomeComponent extends React.Component {
 
 
 const mapStateToProps = state => ({
-    nodes: state.node,
 
 });
 
