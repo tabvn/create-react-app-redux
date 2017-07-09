@@ -1,10 +1,6 @@
 import {createStore, applyMiddleware, compose} from 'redux'
 import thunk from 'redux-thunk'
 import rootReducer from './modules'
-import {SET_CURRENT_USER} from './modules/auth'
-import {PUSH_VIEW_CONTROLLER} from './modules/navigation'
-import {CONNECT_SOCKET, DISCONNECT_SOCKET} from './modules/socket'
-import {SET_APP_CONFIG, JOIN_GROUP_WITH_POPUP} from './modules/app'
 import setAuth from './utils/setAuth'
 import Cookies from 'js-cookie'
 
